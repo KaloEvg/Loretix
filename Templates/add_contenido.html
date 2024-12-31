@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Añadir Contenido</h2>
+<form method="POST" enctype="multipart/form-data">
+    <div class="mi-formulario-container">
+    <label for="tipo">Tipo:</label>
+    <select name="tipo" required>
+        <option value="" disabled selected>Seleccionar tipo</option>
+        <option value="pelicula">Película</option>
+        <option value="serie">Serie</option>
+    </select>
+
+    <label for="genero">Género:</label>
+    <select name="genero" required>
+        {% for genero in generos %}
+            <option value="" disabled selected>Seleccionar tipo</option>
+            <option value="{{ genero }}">{{ genero }}</option>
+        {% endfor %}
+    </select>
+
+    <label for="titulo">Título:</label>
+    <input type="text" name="titulo" required>
+
+    <label for="anio">Año:</label>
+    <input type="number" name="anio" min="1900" max="2024" required>
+
+    <label for="imagen">Imagen del Póster:</label>
+    <input type="file" name="imagen" accept="image/*" required>
+
+    <button type="submit">Añadir</button>
+</form>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        <ul>
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+{% endblock %}

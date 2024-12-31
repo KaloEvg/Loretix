@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Mi Sitio{% endblock %}</title>
+    <link rel="icon" href="{{ url_for('static', filename='icon.ico') }}" type="image/ico">
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+    <style>
+        body {
+            background: url("{{ url_for('static', filename='background.png') }}") no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="{{ url_for('inicio') }}">
+                <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
+            </a>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="{{ url_for('inicio') }}" class="active">Inicio</a></li>
+                <li><a href="{{ url_for('mostrar_peliculas') }}">Películas</a></li>
+                <li><a href="{{ url_for('mostrar_series') }}">Series</a></li>
+                <li><a href="{{ url_for('mi_lista') }}">Mi Lista</a></li>
+                {% if session.get('admin') %}
+                <li>
+                    <a href="#">Administrador &#9662;</a>
+                    <ul class="submenu">
+                        <li><a href="{{ url_for('add_contenido') }}">Añadir Contenido</a></li>
+                        <li><a href="{{ url_for('modificar_contenido') }}">Modificar Contenido</a></li>
+                        <li><a href="{{ url_for('add_destacadas') }}">Añadir a Destacados</a></li>
+                        <li><a href="{{ url_for('borrar_contenido') }}">Borrar Contenido</a></li>
+                    </ul>
+                </li>
+                {% endif %}
+            </ul>
+            <a href="{{ url_for('logout') }}" class="logout">Cerrar Sesión</a>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+<footer class="footer">
+    <p>&copy; Loreto es la profe más guapa de todas y me va a poner un 10 jeje.</p>
+</footer>
+</html>

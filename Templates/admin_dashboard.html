@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Panel de Administrador</h1>
+
+<nav>
+    <ul>
+        <li><a href="{{ url_for('add_contenido') }}">Añadir Contenido</a></li>
+        <li><a href="{{ url_for('modificar_contenido') }}">Modificar Contenido</a></li>
+        <li><a href="{{ url_for('borrar_contenido') }}">Borrar Contenido</a></li>
+        <li><a href="{{ url_for('add_destacadas') }}">Añadir a Destacadas</a></li>
+        <li><a href="{{ url_for('logout') }}">Cerrar Sesión</a></li>
+    </ul>
+</nav>
+
+<section>
+    <h2>Bienvenido, {{ session['usuario'] }}</h2>
+    <p>Aquí puedes gestionar el contenido de películas y series.</p>
+</section>
+{% endblock %}

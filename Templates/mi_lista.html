@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}Mi Lista{% endblock %}
+
+{% block content %}
+<h2>Mi Lista</h2>
+
+{% if contenido_lista %}
+<div class="mi-lista-container">
+    <table class="mi-lista-table">
+        <thead>
+            <tr>
+                <th>Título</th>
+                <th>Género</th>
+                <th>Año</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in contenido_lista %}
+            <tr>
+                <td>{{ item['titulo'] }}</td>
+                <td>{{ item['genero'] }}</td>
+                <td>{{ item['anio'] }}</td>
+                <td>
+                    <form method="POST" action="{{ url_for('mi_lista') }}">
+                        <input type="hidden" name="borrar_id" value="{{ item['id'] }}">
+                        <button type="submit" class="btn-delete">Borrar</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<p class="empty-message">No has añadido ningún contenido a tu lista.</p>
+{% endif %}
+
+{% endblock %}

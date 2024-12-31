@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block title %}Añadir a Destacadas{% endblock %}
+
+{% block content %}
+<h2>Añadir Películas y Series a Destacadas</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Título</th>
+            <th>Género</th>
+            <th>Tipo</th>
+            <th>Año</th>
+            <th>Posición</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in contenido %}
+        <tr>
+            <form method="POST" action="{{ url_for('add_destacadas') }}">
+                <td>{{ item.id }}</td>
+                <td>{{ item.titulo }}</td>
+                <td>{{ item.genero }}</td>
+                <td>{{ item.tipo }}</td>
+                <td>{{ item.anio }}</td>
+                <td>
+                    <select name="posicion" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="hidden" name="contenido_id" value="{{ item.id }}">
+                    <button type="submit" class="primary-btn">Añadir</button>
+                </td>
+            </form>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<div class="buttons">
+    <a href="{{ url_for('admin_dashboard') }}" class="secondary-btn">Volver</a>
+</div>
+{% endblock %}

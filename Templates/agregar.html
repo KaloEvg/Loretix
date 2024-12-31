@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Agregar {{ tipo|capitalize }} - Loretix{% endblock %}
+
+{% block content %}
+<h1>Agregar {{ tipo|capitalize }}</h1>
+<form method="POST" enctype="multipart/form-data">
+    <label for="genero">Género:</label>
+    <input type="text" id="genero" name="genero" required>
+    <label for="titulo">Título:</label>
+    <input type="text" id="titulo" name="titulo" required>
+    <label for="anio">Año:</label>
+    <input type="number" id="anio" name="anio" required>
+    <label for="imagen">Poster (JPEG/PNG, tamaño 300x450):</label>
+    <input type="file" id="imagen" name="imagen" accept=".jpg,.jpeg,.png" required>
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</form>
+{% endblock %}
+

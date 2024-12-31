@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2 class="titulo-boton">Borrar Contenido</h2>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Género</th>
+            <th>Título</th>
+            <th>Tipo</th>
+            <th>Año</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in contenido %}
+        <tr>
+            <td>{{ item[0] }}</td>
+            <td>{{ item[2] }}</td>
+            <td>{{ item[3] }}</td>
+            <td>{{ item[1] }}</td>
+            <td>{{ item[4] }}</td>
+            <td>
+                <form method="POST" action="{{ url_for('borrar_contenido') }}" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este contenido?');">
+                    <input type="hidden" name="id" value="{{ item[0] }}">
+                    <button type="submit" class="primary-btn">Borrar</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='estilos.css') }}">
+    <title>{{ contenido[2] }}</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="{{ url_for('inicio') }}">Inicio</a>
+            <a href="{{ url_for('peliculas') }}">Películas</a>
+            <a href="{{ url_for('series') }}">Series</a>
+            <a href="{{ url_for('mi_lista') }}">Mi Lista</a>
+            <a href="{{ url_for('logout') }}">Cerrar Sesión</a>
+        </nav>
+    </header>
+    <main>
+        <h1>{{ contenido[2] }}</h1>
+        <img src="{{ url_for('static', filename=contenido[4]) }}" alt="{{ contenido[2] }}">
+        <p><strong>Año:</strong> {{ contenido[3] }}</p>
+        <p><strong>Género:</strong> {{ contenido[1] }}</p>
+    </main>
+</body>
+</html>

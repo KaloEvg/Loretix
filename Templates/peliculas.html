@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Películas{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    {% for genero, peliculas in peliculas_por_genero.items() %}
+    <h2 class="genre-header">{{ genero }}</h2>
+    <div class="grid-container">
+        {% for pelicula in peliculas %}
+        <div class="card">
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
+                <img src="{{ url_for('static', filename=pelicula[5]) }}" alt="{{ pelicula[3] }}">
+            </a>
+            <h3>{{ pelicula[3] }}</h3>
+            <p>Año: {{ pelicula[4] }}</p>
+            <form action="{{ url_for('add_to_list', contenido_id=pelicula[0]) }}" method="POST">
+                <button type="submit" class="btn-add">Añadir a Mi Lista</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <p>No hay películas disponibles en este género.</p>
+    {% endfor %}
+</div>
+{% endblock %}

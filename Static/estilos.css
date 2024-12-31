@@ -1,0 +1,623 @@
+/* General */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: url("{{ url_for('static', filename='background.png') }}") no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+}
+
+/* Contenedor principal */
+.background {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.6); /* Oscurece el fondo ligeramente */
+}
+
+/* Formulario */
+.container {
+    background: rgba(34,25,46,255); /* Fondo morado oscuro semi-transparente */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+    width: 350px;
+    text-align: center;
+}
+
+.logo img {
+    width: 200px;
+    margin-bottom: 20px;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.logo {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Alineación vertical opcional si es necesario */
+    text-align: center; /* Asegura el centrado del texto si lo hay */
+}
+
+/* Títulos */
+h2 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #ffffff; /* Rosa neón */
+}
+
+/* Campos del formulario */
+label {
+    display: block;
+    text-align: left;
+    margin-bottom: 5px;
+    color: #ddd;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background: #300749; /* Morado más oscuro */
+    color: #fff;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+input:focus {
+    outline: none;
+    border: 2px solid #ff77ff;
+    box-shadow: 0 0 8px #ff77ff;
+}
+
+/* Botones */
+button, .secondary-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px 5px 0;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+button {
+    background: #ff77ff; /* Rosa neón */
+    color: #fff;
+}
+
+button:hover {
+    background: #e44ee6; /* Rosa más oscuro */
+    box-shadow: 0 0 10px #ff77ff;
+}
+
+.secondary-btn {
+    background: #6d2074; /* Morado fuerte */
+    color: #fff;
+    text-decoration: none;
+}
+
+.secondary-btn:hover {
+    background: #520b59;
+    box-shadow: 0 0 10px #aa55aa;
+}
+
+/* Ajustes responsivos */
+@media (max-width: 600px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+    }
+}
+
+/* Menú principal */
+header {
+    background-color: rgba(0, 0, 0, 0.95);
+    padding: 10px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    margin-bottom: -10px;
+}
+
+/* Barra de navegación principal */
+.navbar {
+    height: 10px; /* Altura más pequeña */
+    display: flex;
+    align-items: center; /* Centra verticalmente los elementos */
+    justify-content: space-between; /* Distribuye los elementos */
+    padding: 0 15px; /* Espacio horizontal interno */
+}
+/* Menú principal: Estilo de enlaces */
+.navbar ul {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 20px;
+}
+
+.navbar ul li {
+    position: relative;
+}
+
+.navbar ul li a {
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s, color 0.3s;
+}
+
+.navbar ul li a:hover {
+    background-color: #6f42c1; /* Color hover */
+    color: #f8f9fa;
+}
+
+/* Submenú desplegable */
+.navbar ul li .submenu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+    min-width: 180px;
+    z-index: 1000;
+}
+
+.navbar ul li .submenu li {
+    margin: 0;
+}
+
+.navbar ul li .submenu a {
+    padding: 10px 15px;
+    display: block;
+    color: #fff;
+}
+
+.navbar ul li:hover .submenu {
+    display: block;
+}
+
+/* Cerrar sesión a la derecha */
+.logout {
+    margin-left: auto;
+    margin-right: 40px;
+    background-color: #e53935;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+    position: relative; /* Permite ajustar la posición */
+    top: -15px; /* Eleva ligeramente el botón */
+}
+
+.logout:hover {
+    background-color: #c62828;
+}
+
+
+/* Espaciado principal del contenedor */
+main {
+    padding-top: 120px; /* Incrementa el espacio bajo el menú */
+}
+
+/* Contenedor principal */
+.content-container {
+    margin-top: 120px; /* Espacio desde el menú */
+    padding: 0 20px;
+}
+
+/* Grid: 4 columnas */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    justify-items: center;
+}
+
+/* Tarjeta de cada película */
+.card {
+    background-color: #2a0731;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Sombra inicial */
+    text-align: center;
+    width: 100%;
+    max-width: 280px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease, transform 0.3s ease; /* Efecto de sombra */
+}
+
+/* Sombra al pasar el ratón */
+.card:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5);
+    transform: translateY(-5px); /* Eleva ligeramente la tarjeta */
+}
+
+/* Imagen dentro de la tarjeta */
+.card img {
+    width: 95%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Botón estilizado */
+.btn-add {
+    background-color: #ff00cc;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-add:hover {
+    background-color: #d400a3;
+}
+
+/* Encabezado del género con cuadro */
+.genre-header {
+    background-color: #3f0c35; /* Fondo del cuadro */
+    color: #fff;
+    padding: 10px 20px;
+    margin: 80px auto 50px auto; /* Espacio arriba y abajo */
+    border-radius: 8px; /* Bordes redondeados */
+    width: fit-content; /* Ancho según el contenido */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    text-transform: uppercase;
+    font-size: 1.5em;
+    letter-spacing: 1px;
+    text-align: center;
+    transition: transform 0.3s ease; /* Efecto opcional */
+}
+
+.genre-header:hover {
+    transform: scale(1.05); /* Agranda ligeramente el cuadro */
+}
+
+/* Estilo para el footer */
+.footer {
+    background-color: #000; /* Fondo negro */
+    color: #fff; /* Texto blanco */
+    text-align: center; /* Centra el texto */
+    padding: 15px 0; /* Espaciado arriba y abajo */
+    font-size: 0.9rem; /* Tamaño de fuente */
+    margin-top: 50px; /* Espacio entre el contenido y el footer */
+    width: 100%; /* Ocupa todo el ancho */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3); /* Sombra superior */
+}
+
+/* Contenedor principal */
+.mi-lista-container {
+    display: flex; /* Flexbox para centrar */
+    justify-content: center; /* Centrado horizontal */
+    align-items: flex-start; /* Alinea el contenido arriba */
+    min-height: 70vh; /* Altura mínima del contenedor */
+    padding: 20px; /* Espaciado interno */
+    margin: 50px auto; /* Espaciado arriba y centrado horizontal */
+    background-color: #2a0731; /* Fondo morado oscuro */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 1000px; /* Máximo ancho */
+}
+
+/* Recuadro estilizado para "Mi Lista" */
+h2 {
+    background-color: #6f42c1; /* Fondo morado claro */
+    color: #fff; /* Texto blanco */
+    text-align: center; /* Centrado */
+    padding: 10px 20px; /* Espaciado interno */
+    margin: 30px auto 20px auto; /* Espacio arriba y abajo */
+    border-radius: 8px; /* Bordes redondeados */
+    width: fit-content; /* Ancho según el contenido */
+    text-transform: uppercase; /* Mayúsculas */
+    font-size: 1.5rem; /* Tamaño de fuente */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Tabla principal */
+.mi-lista-table {
+    width: 100%; /* Ancho completo del contenedor */
+    border-collapse: collapse; /* Colapsa los bordes */
+    background-color: #3f0c35; /* Fondo de la tabla */
+    color: #fff; /* Texto blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    overflow: hidden; /* Evita desbordamientos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* Encabezado de la tabla */
+.mi-lista-table th {
+    background-color: #6f42c1; /* Morado más claro */
+    color: #fff; /* Texto blanco */
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    padding: 15px;
+    text-align: center;
+}
+
+/* Celdas de la tabla */
+.mi-lista-table td {
+    text-align: center;
+    padding: 12px;
+    border: 1px solid #6d2074; /* Borde entre celdas */
+}
+
+/* Filas alternas */
+.mi-lista-table tr:nth-child(even) {
+    background-color: #4a0f3b; /* Color de fondo para filas pares */
+}
+
+/* Botón borrar */
+.btn-delete {
+    background-color: #ff00cc; /* Rosa neón */
+    color: #fff;
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-delete:hover {
+    background-color: #d400a3;
+    transform: scale(1.05);
+}
+
+/* Mensaje cuando la lista está vacía */
+.empty-message {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #ff00cc; /* Rosa neón */
+    margin-top: 20px;
+}
+
+/* Estilo del pie de página */
+.footer {
+    background-color: #000; /* Fondo negro */
+    color: #fff; /* Texto blanco */
+    text-align: center; /* Centrar texto */
+    padding: 15px 0; /* Espaciado superior e inferior */
+    font-size: 0.9rem; /* Tamaño del texto */
+    width: 100%; /* Ocupa todo el ancho */
+    margin-top: 30px; /* Espaciado respecto al contenido */
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3); /* Sombra superior */
+}
+
+
+/* Estilo para los títulos */
+h1 {
+    text-align: center;
+    color: #ff77ff; /* Rosa neón */
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    font-size: 2rem;
+}
+
+/* Etiquetas del formulario */
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #ff77ff; /* Rosa neón */
+}
+
+/* Campos de entrada */
+form input,
+form select {
+    width: 100%; /* Ocupa todo el ancho */
+    padding: 10px; /* Espaciado interno */
+    margin-bottom: 20px; /* Espaciado entre campos */
+    border: none;
+    border-radius: 8px; /* Bordes redondeados */
+    background-color: #2a0731; /* Fondo morado oscuro */
+    color: #fff; /* Texto blanco */
+    font-size: 1rem;
+    box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.4); /* Sombra interna */
+}
+
+form input:focus,
+form select:focus {
+    outline: none;
+    border: 2px solid #ff77ff; /* Borde rosa neón */
+    box-shadow: 0 0 8px #ff77ff; /* Resaltado */
+}
+
+/* Botón de envío */
+form button {
+    background-color: #ff77ff; /* Rosa neón */
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: block;
+    margin: 0 auto; /* Centra el botón */
+}
+
+form button:hover {
+    background-color: #e44ee6; /* Rosa más oscuro */
+    transform: scale(1.05); /* Efecto de zoom */
+}
+
+/* Mensajes flash */
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px auto;
+    text-align: center;
+}
+
+ul li {
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+ul li.success {
+    background-color: #4caf50; /* Verde para éxito */
+    color: #fff;
+}
+
+ul li.error {
+    background-color: #f44336; /* Rojo para errores */
+    color: #fff;
+}
+
+/* Fondo general */
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #2a0731, #6d2074);
+    min-height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+
+/* Estilo general para todas las tablas */
+table {
+    width: 95%; /* Ancho de la tabla */
+    margin: 20px auto; /* Centrado con margen */
+    background-color: #3f0c35; /* Fondo oscuro */
+    color: #fff; /* Texto blanco */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Sombra ligera */
+}
+
+/* Encabezados de la tabla */
+table th {
+    background-color: #6f42c1; /* Fondo morado claro */
+    color: #fff; /* Texto blanco */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    font-size: 0.9rem; /* Tamaño del texto */
+    font-weight: bold;
+    text-align: center; /* Centrado del texto */
+    border: 1px solid #6d2074; /* Bordes */
+}
+
+/* Celdas de la tabla */
+table td {
+    text-align: center; /* Texto centrado */
+    font-size: 0.9rem; /* Tamaño del texto */
+    border: 1px solid #6d2074; /* Bordes */
+    height: 40px; /* Altura uniforme */
+}
+
+/* Filas alternas */
+table tr:nth-child(even) {
+    background-color: #4a0f3b; /* Fondo más claro */
+}
+
+/* Botones dentro de las tablas */
+table button {
+    background-color: #ff77ff; /* Fondo rosa */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+table button:hover {
+    background-color: #d400a3; /* Hover rosa oscuro */
+    transform: scale(1.05);
+}
+
+/* Selectores desplegables */
+table select {
+    padding: 4px 6px; /* Espaciado interno */
+    border: none;
+    border-radius: 4px;
+    background-color: #6f42c1; /* Fondo morado */
+    color: #fff; /* Texto blanco */
+    font-size: 0.8rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+
+
+
+/* Campos de texto dentro de las celdas */
+table input {
+    width: 90%; /* Ancho completo */
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+    color: #fff; /* Texto blanco */
+    text-align: center; /* Centra el texto */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+
+
+/* Título principal */
+h2 {
+    text-align: center; /* Centra el texto */
+    color: #ff77ff; /* Rosa neón */
+    font-size: 2rem;
+    text-transform: uppercase;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* Reducir el ancho y espacio de la tabla/formulario */
+.mi-formulario-container {
+    max-width: 600px; /* Ancho máximo del formulario */
+    margin: 0 auto; /* Centrado */
+    padding: 20px;
+}
+
+/* Reducir los campos de entrada y selects */
+.mi-formulario-container input,
+.mi-formulario-container select {
+    width: 90%; /* Ancho reducido */
+    padding: 5px 10px; /* Menos padding */
+    font-size: 0.9em; /* Fuente más pequeña */
+    margin-bottom: 10px; /* Espacio entre campos */
+}
+
+/* Botón más pequeño */
+.mi-formulario-container button {
+    padding: 8px 15px; /* Ajustar tamaño del botón */
+    font-size: 0.9em;
+    border-radius: 5px;
+}
+
+/* Asegurar que el contenido ocupe toda la pantalla para empujar el footer */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Altura mínima igual a la ventana */
+}
+
+main {
+    flex: 1; /* Permitir que el contenido crezca y empuje el footer hacia abajo */
+}

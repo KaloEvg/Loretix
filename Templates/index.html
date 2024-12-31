@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Inicio{% endblock %}
+
+{% block content %}
+<div class="content-container">
+    <h2 class="titulo-boton">Películas Destacadas</h2>
+    <div class="grid-container">
+        {% for pelicula in peliculas_destacadas %}
+        <div class="card">
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
+                <img src="{{ url_for('static', filename=pelicula['imagen']) }}" alt="{{ pelicula['titulo'] }}">
+            </a>
+            <h3>{{ pelicula['titulo'] }}</h3>
+            <p>Año: {{ pelicula['anio'] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+
+    <h2 class="titulo-boton">Series Destacadas</h2>
+    <div class="grid-container">
+        {% for serie in series_destacadas %}
+        <div class="card">
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">
+                <img src="{{ url_for('static', filename=serie['imagen']) }}" alt="{{ serie['titulo'] }}">
+            </a>
+            <h3>{{ serie['titulo'] }}</h3>
+            <p>Año: {{ serie['anio'] }}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
